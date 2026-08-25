@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Tests
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install jq
+        run: |
+          if command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get update && sudo apt-get install -y jq
+          elif command -v brew >/dev/null 2>&1; then
+            brew install jq
+          else
+            echo "no supported package manager for jq" >&2
+            exit 1
+          fi
+
+      - name: Run test suite
+        run: bash tests/run-tests.sh

@@ -1,8 +1,9 @@
 # herdr-lazydocker
 
+[![CI](https://github.com/sudoeren/herdr-lazydocker/actions/workflows/ci.yml/badge.svg)](https://github.com/sudoeren/herdr-lazydocker/actions/workflows/ci.yml)
 [![Version: 0.1.0](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/sudoeren/herdr-lazydocker/releases)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudoeren/herdr-lazydocker/blob/main/LICENSE)
-![Platform: macOS | Linux](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sudoeren/herdr-lazydocker/blob/main/LICENSE)
+![Platform: macOS | Linux](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-orange)
 
 [![herdr-lazydocker demo](docs/media/demo.gif)](docs/media/demo.gif)
 
@@ -115,11 +116,15 @@ Link does not run any build step; the plugin has none. Scripts are executed from
 herdr-plugin.toml            # plugin manifest
 LICENSE                      # MIT license
 README.md
+.github/
+  workflows/ci.yml           # CI: hermetic test suite on Linux and macOS
 docs/
   media/                     # screenshots and the demo recording
 scripts/
   open-lazydocker.sh         # action: open in a split (open / focus / close)
   open-lazydocker-tab.sh     # action: open in a tab (open / switch / close)
+tests/
+  run-tests.sh               # hermetic suite with a mocked herdr CLI
 ```
 
 ## License
