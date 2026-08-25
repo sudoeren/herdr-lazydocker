@@ -1,5 +1,6 @@
 # herdr-lazydocker
 
+[![Version: 0.1.0](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/sudoeren/herdr-lazydocker/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudoeren/herdr-lazydocker/blob/main/LICENSE)
 ![Platform: macOS | Linux](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)
 
