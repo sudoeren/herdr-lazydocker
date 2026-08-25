@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Toggle lazydocker in its own tab: CLOSE when it is the focused pane, FOCUS when
 # in the focused tab, SWITCHTAB when in another tab of the same workspace,
-# otherwise OPEN a new tab. Mirrors herdr-file-viewer's launch_decision_tab.
+# otherwise OPEN a new tab.
 set -uo pipefail
 
 herdr_bin="${HERDR_BIN_PATH:-herdr}"

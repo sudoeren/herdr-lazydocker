@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Toggle lazydocker in a split pane: OPEN if absent in the focused tab,
 # FOCUS (zoom on/off) if present but unfocused, CLOSE if it is the focused pane.
-# Mirrors herdr-file-viewer's launch_decision, reimplemented in jq.
 set -uo pipefail
 
 herdr_bin="${HERDR_BIN_PATH:-herdr}"

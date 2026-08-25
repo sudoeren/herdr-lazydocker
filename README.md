@@ -1,22 +1,33 @@
 # herdr-lazydocker
 
-Open [lazydocker](https://github.com/jesseduffield/lazydocker) in a herdr split pane or its own tab, with smart toggle: press once to open, again to focus, and again (while focused) to close. Quitting lazydocker (`q`) closes the pane.
+A [herdr](https://herdr.dev) plugin that brings [lazydocker](https://github.com/jesseduffield/lazydocker) into your terminal workspace. Open it beside your work in a split pane or in its own tab, with a smart toggle: press once to open, again to focus, and again while focused to close. Quitting lazydocker (`q`) closes its pane.
 
-**Split pane** (`prefix+m`) — lazydocker beside your work:
+## Features
 
-![lazydocker in a herdr split pane](docs/split-pane.jpeg)
+- **Split pane** (`prefix+m`): lazydocker side by side with your work.
 
-**Own tab** (`prefix+d`) — full-window lazydocker:
+  ![lazydocker in a split pane](docs/split-pane.jpeg)
 
-![lazydocker in its own herdr tab](docs/tab.png)
+- **Own tab** (`prefix+shift+m`): full-window lazydocker.
 
-Requires herdr ≥ 0.7.0, `lazydocker`, and `jq` (without jq the shortcut still opens lazydocker, it just loses the toggle).
+  ![lazydocker in its own tab](docs/tab.png)
 
-## Install
+- **Smart toggle**: open, focus, or close with repeated presses.
+- **Workspace aware**: the tab toggle switches to an existing lazydocker tab in the same workspace instead of spawning duplicates.
+
+## Requirements
+
+- herdr >= 0.7.0
+- [lazydocker](https://github.com/jesseduffield/lazydocker) on your `PATH`
+- `jq` (optional; without it the shortcuts still work, they just lose the toggle behavior)
+
+## Installation
+
+From GitHub:
 
 ```bash
-herdr plugin install <you>/herdr-lazydocker
-herdr plugin list   # confirm herdr-lazydocker is registered
+herdr plugin install sudoeren/herdr-lazydocker
+herdr plugin list
 ```
 
 For local development:
@@ -31,7 +42,7 @@ Add to `~/.config/herdr/config.toml`:
 
 ```toml
 [[keys.command]]
-key = "prefix+d"
+key = "prefix+shift+m"
 type = "shell"
 command = "herdr plugin action invoke open-lazydocker-tab --plugin herdr-lazydocker"
 
@@ -41,22 +52,19 @@ type = "shell"
 command = "herdr plugin action invoke open-lazydocker --plugin herdr-lazydocker"
 ```
 
-> **Why `prefix+m` for the split?** `prefix+d` was the obvious choice for both,
-> and `prefix+shift+d` would have been the natural split sibling — but herdr
-> already reserves `prefix+shift+d` for `close_workspace`. `prefix+m` and
-> `prefix+d` are both free in the default keymap. Pick keys that fit your
-> setup; see the herdr keybindings reference (`prefix+?` in herdr) for what is
-> free.
-
-Then reload:
+Reload the config:
 
 ```bash
 herdr server reload-config
 ```
 
-Or invoke without a keybinding:
+## Invoke without keybindings
 
 ```bash
 herdr plugin action invoke open-lazydocker --plugin herdr-lazydocker
 herdr plugin action invoke open-lazydocker-tab --plugin herdr-lazydocker
 ```
+
+## License
+
+[MIT](LICENSE)
