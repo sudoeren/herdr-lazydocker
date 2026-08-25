@@ -1,0 +1,24 @@
+id = "herdr-lazydocker"
+name = "herdr-lazydocker"
+version = "0.1.0"
+description = "Open lazydocker in a herdr split pane or tab, with smart toggle."
+min_herdr_version = "0.7.0"
+platforms = ["linux", "macos"]
+
+[[panes]]
+id = "lazydocker"
+title = "lazydocker"
+placement = "split"
+command = ["lazydocker"]
+
+[[actions]]
+id = "open-lazydocker"
+title = "Open lazydocker"
+description = "Toggle lazydocker in a split pane (open / focus / close)."
+command = ["bash", "scripts/open-lazydocker.sh"]
+
+[[actions]]
+id = "open-lazydocker-tab"
+title = "Open lazydocker (tab)"
+description = "Toggle lazydocker in its own tab (open / switch / close)."
+command = ["bash", "scripts/open-lazydocker-tab.sh"]
