@@ -1,7 +1,6 @@
 # herdr-lazydocker
 
 [![CI](https://github.com/sudoeren/herdr-lazydocker/actions/workflows/ci.yml/badge.svg)](https://github.com/sudoeren/herdr-lazydocker/actions/workflows/ci.yml)
-[![Version: 0.0.1](https://img.shields.io/badge/version-0.0.1-blue.svg)](https://github.com/sudoeren/herdr-lazydocker/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sudoeren/herdr-lazydocker/blob/main/LICENSE)
 ![Platform: macOS | Linux](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-orange)
 
@@ -25,9 +24,6 @@ Requires herdr >= 0.7.0 plus `bash`, `jq`, and [lazydocker](https://github.com/j
 
 ```bash
 herdr plugin install sudoeren/herdr-lazydocker
-
-# or pin a released version:
-herdr plugin install sudoeren/herdr-lazydocker --ref v0.0.1
 ```
 
 Add the launcher keybindings to your active herdr `config.toml`:
