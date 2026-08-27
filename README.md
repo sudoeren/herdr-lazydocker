@@ -15,7 +15,7 @@ A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/j
 Copy this prompt into an AI coding agent running on the machine where you use herdr:
 
 ```
-Install and configure herdr-lazydocker from https://github.com/sudoeren/herdr-lazydocker for me. Follow the repository README and work idempotently: check that herdr >= 0.7.0 and the required tools are available; run `herdr plugin install sudoeren/herdr-lazydocker`; use the installed herdr CLI/help to locate my active `config.toml`; back it up; and add the documented `prefix+m` and `prefix+shift+m` plugin-action keybindings only if they are missing. Do not overwrite unrelated settings or create duplicate bindings. If either key already has a different binding, stop and show me the conflict instead of choosing a replacement. Reload the herdr config, verify that the plugin is installed and the config reload succeeds, then report exactly what you changed. Do not use sudo or install system packages.
+Install and configure herdr-lazydocker from https://github.com/sudoeren/herdr-lazydocker idempotently: verify herdr >= 0.7.0 and required tools, run `herdr plugin install sudoeren/herdr-lazydocker`, back up my active `config.toml`, and add the `prefix+m` / `prefix+shift+m` plugin-action bindings only if missing. Don't overwrite unrelated settings or duplicate bindings; if a key is already bound differently, stop and report the conflict. Reload the config and verify. No sudo or system packages.
 ```
 
 ### Install manually
