@@ -6,7 +6,7 @@
 
 
 
-A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/jesseduffield/lazydocker) in a split pane or its own tab, with a smart toggle. Quitting lazydocker (`q`) closes its pane. Inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit); see [Acknowledgements](#acknowledgements).
+A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/jesseduffield/lazydocker) in a split pane or its own tab. Quitting lazydocker (`q`) closes its pane. Inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit); see [Acknowledgements](#acknowledgements).
 
 ## Quick start
 
@@ -40,7 +40,7 @@ type = "plugin_action"
 command = "herdr-lazydocker.open-lazydocker-tab"
 ```
 
-Run `herdr server reload-config`. `prefix+m` then behaves as: not open -> open in a split; open but unfocused -> focus; focused -> close.
+Run `herdr server reload-config`.
 
 ### Herdr Remote
 
@@ -56,9 +56,9 @@ Add `--session <name>` as usual when attaching to a named session. The keybindin
 
 ## Daily workflow
 
-Press `prefix+m`. A lazydocker split pane opens next to your current directory. Press it again and the pane closes; the launcher never opens a second copy in the same tab.
+Press `prefix+m`. A lazydocker split pane opens next to your current directory.
 
-Press `prefix+shift+m` for the full-window view. If a lazydocker tab already exists in the current workspace, herdr switches to it instead of spawning a duplicate. Press `prefix+shift+m` again while the lazydocker pane is focused to close it.
+Press `prefix+shift+m` for the full-window view.
 
 Inside lazydocker everything is stock: browse containers, images, volumes, and networks with the mouse or keyboard, and manage them with the built-in bindings. Press `?` inside lazydocker for the full list. Quitting with `q` closes the pane, and herdr reuses the spot for your next pane.
 
@@ -68,32 +68,30 @@ The plugin adds exactly two herdr-level keybindings. Everything else is stock la
 
 | Key | Verb | What it does |
 | --- | --- | --- |
-| `prefix+m` | **Split** | Toggles lazydocker in a split pane beside the current work |
-| `prefix+shift+m` | **Tab** | Toggles lazydocker in its own tab, full window |
+| `prefix+m` | **Split** | Opens lazydocker in a split pane beside the current work |
+| `prefix+shift+m` | **Tab** | Opens lazydocker in its own tab, full window |
 
-Both bindings are idempotent. The split binding only acts on a lazydocker pane in the focused pane's tab, and the tab binding only acts on a lazydocker tab in the same workspace, so a launcher press never yanks you into another workspace.
+The split binding only acts on the focused pane's tab, and the tab binding only acts within the same workspace.
 
 ## Features
 
 - **Split pane** (`prefix+m`): lazydocker side by side with your work.
 - **Own tab** (`prefix+shift+m`): full-window lazydocker.
-- **Smart toggle**: open, focus, or close with repeated presses.
-- **Workspace aware**: the tab toggle switches to an existing lazydocker tab in the same workspace instead of spawning duplicates.
+- **Workspace aware**: the tab action switches to an existing lazydocker tab in the same workspace instead of spawning duplicates.
 - **Context aware**: lazydocker roots at the focused pane's working directory, not the plugin install directory.
 
 ## Requirements
 
 - herdr >= 0.7.0
 - [lazydocker](https://github.com/jesseduffield/lazydocker) on `PATH`
-- `jq` (optional; without it the shortcuts still open lazydocker, they just lose the toggle behavior)
+- `jq` (optional; without it the shortcuts still open lazydocker)
 
 ## How it works
 
 Each action is a small `bash` script that talks to the herdr CLI. The split and tab scripts share the same decision logic:
 
 1. Read the invoking pane's working directory from the context herdr injects on action invoke (falling back to the focused pane's cwd, then `$HOME`).
-2. Query `herdr pane list` and decide, in `jq`: `OPEN` when no lazydocker pane is present, `FOCUS` when it exists but is unfocused, `CLOSE` when it is the focused pane.
-3. Execute the decision. The tab variant adds `SWITCHTAB` for a lazydocker tab elsewhere in the same workspace.
+2. Open lazydocker with `herdr plugin pane open` in the requested placement, rooted at that directory.
 
 > **Note (herdr platform behavior):** an action's context always resolves from the pane that currently has **UI focus**, not from a background process. The action opens lazydocker next to the user's focused pane, takes its cwd from that pane, and focuses the new pane. Trigger these actions only through foreground keybindings.
 
@@ -115,15 +113,15 @@ README.md
 .github/
   workflows/ci.yml           # CI: hermetic test suite on Linux and macOS
 scripts/
-  open-lazydocker.sh         # action: open in a split (open / focus / close)
-  open-lazydocker-tab.sh     # action: open in a tab (open / switch / close)
+  open-lazydocker.sh         # action: open in a split
+  open-lazydocker-tab.sh     # action: open in a tab
 tests/
   run-tests.sh               # hermetic suite with a mocked herdr CLI
 ```
 
 ## Acknowledgements
 
-This project is inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit) by [Crokily](https://github.com/Crokily), which applies the same smart split/tab toggle pattern to [lazygit](https://github.com/jesseduffield/lazygit). herdr-lazydocker is an independent adaptation of that idea for [lazydocker](https://github.com/jesseduffield/lazydocker).
+This project is inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit) by [Crokily](https://github.com/Crokily), which opens [lazygit](https://github.com/jesseduffield/lazygit) in a herdr split or tab. herdr-lazydocker is an independent adaptation of that idea for [lazydocker](https://github.com/jesseduffield/lazydocker).
 
 ## License
 
