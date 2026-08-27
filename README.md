@@ -6,7 +6,7 @@
 
 
 
-A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/jesseduffield/lazydocker) in a split pane or its own tab, with a smart toggle: press once to open, again to focus, and again while focused to close. Quitting lazydocker (`q`) closes its pane. Inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit); see [Acknowledgements](#acknowledgements).
+A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/jesseduffield/lazydocker) in a split pane or its own tab, with a smart toggle. Quitting lazydocker (`q`) closes its pane. Inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit); see [Acknowledgements](#acknowledgements).
 
 ## Quick start
 
