@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sudoeren/herdr-lazydocker/blob/main/LICENSE)
 ![Platform: macOS | Linux](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-orange)
 
-[![herdr-lazydocker demo](docs/media/demo.gif)](docs/media/demo.gif)
+
 
 A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/jesseduffield/lazydocker) in a split pane or its own tab, with a smart toggle: press once to open, again to focus, and again while focused to close. Quitting lazydocker (`q`) closes its pane. Inspired by [herdr-lazygit](https://github.com/Crokily/herdr-lazygit); see [Acknowledgements](#acknowledgements).
 
@@ -118,8 +118,6 @@ LICENSE                      # MIT license
 README.md
 .github/
   workflows/ci.yml           # CI: hermetic test suite on Linux and macOS
-docs/
-  media/                     # screenshots and the demo recording
 scripts/
   open-lazydocker.sh         # action: open in a split (open / focus / close)
   open-lazydocker-tab.sh     # action: open in a tab (open / switch / close)
