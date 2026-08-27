@@ -81,7 +81,7 @@ The bindings are plain herdr `[[keys.command]]` entries in your `config.toml`, s
 - **Remove a binding**: delete the whole `[[keys.command]]` block (keys starting with `[[keys.command]]` are standalone entries, not inside a list).
 - **Keep the defaults**: the install steps above already add them; just leave `config.toml` alone.
 
-The actions themselves (`herdr-lazydocker.open-lazydocker`, `herdr-lazydocker.open-lazydocker-tab`) come from the plugin and are not meant to be renamed — only the keys that trigger them are user-configurable.
+The actions themselves (`herdr-lazydocker.open-lazydocker`, `herdr-lazydocker.open-lazydocker-tab`) come from the plugin and are not meant to be renamed; only the keys that trigger them are user-configurable.
 
 ## Features
 

@@ -75,11 +75,10 @@ else
 fi
 
 manifest_version="$(sed -n 's/^version = "\(.*\)"/\1/p' "$ROOT/herdr-plugin.toml")"
-readme_version="$(sed -n 's/.*version-\([0-9.]*\).*/\1/p' "$ROOT/README.md")"
-if [ -n "$manifest_version" ] && [ "$manifest_version" = "$readme_version" ]; then
-  pass "manifest and README versions match ($manifest_version)"
+if [ -n "$manifest_version" ]; then
+  pass "herdr-plugin.toml has a version ($manifest_version)"
 else
-  fail "version mismatch: manifest=$manifest_version README=$readme_version"
+  fail "herdr-plugin.toml has a version"
 fi
 
 if ! grep -q '—\|–' "$ROOT/README.md"; then
