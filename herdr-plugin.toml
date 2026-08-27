@@ -1,7 +1,7 @@
 id = "herdr-lazydocker"
-name = "herdr-lazydocker"
-version = "0.1.0"
-description = "Open lazydocker in a herdr split pane or tab, with smart toggle."
+name = "Lazydocker"
+version = "0.0.1"
+description = "Run lazydocker in a herdr split pane or tab with a smart open/focus/close toggle."
 min_herdr_version = "0.7.0"
 platforms = ["linux", "macos"]
 
