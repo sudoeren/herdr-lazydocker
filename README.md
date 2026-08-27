@@ -15,7 +15,7 @@ A [herdr](https://herdr.dev/) plugin that runs [lazydocker](https://github.com/j
 Copy this prompt into an AI coding agent running on the machine where you use herdr:
 
 ```
-Install and configure herdr-lazydocker from https://github.com/sudoeren/herdr-lazydocker idempotently: verify herdr >= 0.7.0 and required tools, run `herdr plugin install sudoeren/herdr-lazydocker`, back up my active `config.toml`, and add the `prefix+m` / `prefix+shift+m` plugin-action bindings only if missing. Don't overwrite unrelated settings or duplicate bindings; if a key is already bound differently, stop and report the conflict. Reload the config and verify. No sudo or system packages.
+Install and configure herdr-lazydocker from https://github.com/sudoeren/herdr-lazydocker idempotently: verify herdr >= 0.7.0 and required tools, run `herdr plugin install sudoeren/herdr-lazydocker`, back up my active `config.toml`, and add the `prefix+m` / `prefix+shift+m` plugin-action bindings only if missing. Don't overwrite unrelated settings or duplicate bindings; if a key is already bound differently, stop and report the conflict. Reload the config and verify. Mention that the shortcuts can be customized later by editing the keys in `config.toml`. No sudo or system packages.
 ```
 
 ### Install manually
@@ -72,6 +72,16 @@ The plugin adds exactly two herdr-level keybindings. Everything else is stock la
 | `prefix+shift+m` | **Tab** | Opens lazydocker in its own tab, full window |
 
 The split binding only acts on the focused pane's tab, and the tab binding only acts within the same workspace.
+
+### Customizing the shortcuts
+
+The bindings are plain herdr `[[keys.command]]` entries in your `config.toml`, so you can change or remove them freely:
+
+- **Change a key**: edit the `key` value in the matching block and run `herdr server reload-config`.
+- **Remove a binding**: delete the whole `[[keys.command]]` block (keys starting with `[[keys.command]]` are standalone entries, not inside a list).
+- **Keep the defaults**: the install steps above already add them; just leave `config.toml` alone.
+
+The actions themselves (`herdr-lazydocker.open-lazydocker`, `herdr-lazydocker.open-lazydocker-tab`) come from the plugin and are not meant to be renamed — only the keys that trigger them are user-configurable.
 
 ## Features
 
